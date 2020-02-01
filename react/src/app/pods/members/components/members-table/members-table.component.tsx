@@ -1,20 +1,18 @@
 import * as React from 'react';
-import { MemberEntity } from '../../model';
+import { MemberEntity, MemberColumn } from '../../model';
 import Paper from '@material-ui/core/Paper';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { membersTableStyles } from './members-table.component.styles';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import TableBody from '@material-ui/core/TableBody';
+import { MembersTableBody } from './members-table-body.component';
+import { MembersTableHead } from './members-table-head.component';
 
 interface MembersTableProps extends WithStyles {
   members: MemberEntity[];
 }
 
-const membersTableColumns = [
+const membersTableColumns: MemberColumn[] = [
   { id: 'avatar_url', label: 'Avatar' },
   { id: 'id', label: 'Id' },
   { id: 'login', label: 'Name' },
@@ -26,25 +24,9 @@ const MembersTableComponentInner: React.FunctionComponent<MembersTableProps> = (
     <>
       <Paper>
         <TableContainer className={classes.tableContainer}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                {membersTableColumns.map(column => (
-                  <TableCell key={column.id}>{column.label}</TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {members.map(member => {
-                return (
-                  <TableRow key={member.id}>
-                    {membersTableColumns.map(column => (
-                      <TableCell key={column.id}>{member[column.id]}</TableCell>
-                    ))}
-                  </TableRow>
-                );
-              })}
-            </TableBody>
+          <Table stickyHeader>
+            <MembersTableHead columns={membersTableColumns} />
+            <MembersTableBody members={members} columns={membersTableColumns} />
           </Table>
         </TableContainer>
       </Paper>
