@@ -14,3 +14,17 @@ export const createDefaultMemberEntity = () => ({
   login: '',
   avatar_url: '',
 });
+
+export interface MemberDetailsVM {
+  id: number;
+  login: string;
+  name: string;
+  avatar_url: string;
+}
+
+export const createEmptyMemberDetails = (): MemberDetailsVM => ({
+  id: null,
+  login: '',
+  name: '',
+  avatar_url: '',
+});

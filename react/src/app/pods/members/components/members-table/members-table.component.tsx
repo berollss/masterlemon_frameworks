@@ -10,6 +10,7 @@ import { MembersTableHead } from './members-table-head.component';
 
 interface MembersTableProps extends WithStyles {
   members: MemberEntity[];
+  onSelectMember: (memberLogin: string) => void;
 }
 
 const membersTableColumns: MemberColumn[] = [
@@ -19,14 +20,14 @@ const membersTableColumns: MemberColumn[] = [
 ];
 
 const MembersTableComponentInner: React.FunctionComponent<MembersTableProps> = (props: MembersTableProps) => {
-  const { members, classes } = props;
+  const { members, classes, onSelectMember } = props;
   return (
     <>
       <Paper>
         <TableContainer className={classes.tableContainer}>
           <Table stickyHeader>
             <MembersTableHead columns={membersTableColumns} />
-            <MembersTableBody members={members} columns={membersTableColumns} />
+            <MembersTableBody members={members} columns={membersTableColumns} onSelectMember={onSelectMember} />
           </Table>
         </TableContainer>
       </Paper>

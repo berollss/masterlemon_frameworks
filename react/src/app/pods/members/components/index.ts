@@ -1,2 +1,2 @@
 export * from './members-table';
-export { MembersPageComponent } from './members-page/members-page.component';
+export * from './members-list/members.component';
