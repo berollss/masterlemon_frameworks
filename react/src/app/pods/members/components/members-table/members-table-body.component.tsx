@@ -3,6 +3,7 @@ import TableBody from '@material-ui/core/TableBody';
 import { MemberEntity, MemberColumn } from '../../model';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Avatar from '@material-ui/core/Avatar';
 
 interface MembersTableBodyProps {
   members: MemberEntity[];
@@ -25,7 +26,8 @@ export const MembersTableBody: React.FunctionComponent<MembersTableBodyProps> = 
                 {column.id !== 'avatar_url' ? (
                   member[column.id]
                 ) : (
-                  <img src={member.avatar_url} style={{ maxWidth: '10rem' }} />
+                  <Avatar src={member.avatar_url} />
+                  // <img src={member.avatar_url} style={{ maxWidth: '10rem' }} />
                 )}
               </TableCell>
             ))}
