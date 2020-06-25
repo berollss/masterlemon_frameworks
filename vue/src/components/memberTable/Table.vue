@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Member Page</h2>
+    <input v-model="organizationName"/>
     <button @click="loadMembers">Load</button>
     <table :class="$style.table">
       <thead>
@@ -26,11 +27,12 @@ export default Vue.extend({
   name: "MemberTable",
   components: { MemberHead, MemberRow },
   data: () => ({
-    members: [] as Member[]
+    members: [] as Member[],
+    organizationName: 'lemoncode' as string
   }),
   methods: {
     loadMembers: function() {
-      getAllMembers("lemoncode").then(members => {
+      getAllMembers(this.organizationName).then(members => {
         this.members = members;
       });
     }
