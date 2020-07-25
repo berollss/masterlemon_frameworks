@@ -20,6 +20,9 @@ export interface MemberDetailsVM {
   login: string;
   name: string;
   avatar_url: string;
+  company: string;
+  blog: string;
+  email: string;
 }
 
 export const createEmptyMemberDetails = (): MemberDetailsVM => ({
@@ -27,4 +30,7 @@ export const createEmptyMemberDetails = (): MemberDetailsVM => ({
   login: '',
   name: '',
   avatar_url: '',
+  company: '',
+  blog: '',
+  email: '',
 });

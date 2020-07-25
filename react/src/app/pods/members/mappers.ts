@@ -15,4 +15,7 @@ export const mapMemberDetailsFromDomainToViewModel = (memberDetails: MemberDetai
   login: memberDetails.login,
   name: memberDetails.name,
   avatar_url: memberDetails.avatar_url,
+  company: memberDetails.company,
+  blog: memberDetails.blog,
+  email: memberDetails.email,
 });

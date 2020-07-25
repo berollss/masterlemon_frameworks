@@ -21,7 +21,7 @@ export const MemberDetailsComponentInner: React.FunctionComponent<MemberDetailsP
   const [memberDetails, setMemberDetails] = React.useState<MemberDetailsVM>(createEmptyMemberDetails());
 
   React.useEffect(() => {
-    memberAPI.getMemberDetails(memberLogin).then(memberDetails => {
+    memberAPI.getMemberDetails(memberLogin).then((memberDetails) => {
       setMemberDetails(mapMemberDetailsFromDomainToViewModel(memberDetails));
     });
   }, []);
@@ -35,7 +35,11 @@ export const MemberDetailsComponentInner: React.FunctionComponent<MemberDetailsP
             <Typography variant="h6"> {memberDetails.name} </Typography>
           </CardMedia>
           <Divider />
-          <CardContent>Details component {memberDetails.name}</CardContent>
+          <CardContent>
+            <Typography variant="button"> Company: </Typography><Typography variant="body1">{memberDetails.company} </Typography>
+            <Typography variant="button"> Blog: </Typography><Typography variant="body1">{memberDetails.blog} </Typography>
+            <Typography variant="button"> e-mail: </Typography><Typography variant="body1">{memberDetails.email} </Typography>
+          </CardContent>
         </CardActionArea>
       </Card>
     </div>
