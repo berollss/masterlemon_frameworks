@@ -1,5 +1,9 @@
 <template>
-  <member-table/>
+  <v-app>
+    <v-content>
+      <member-table />
+    </v-content>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -8,6 +12,6 @@ import { MemberTable } from "./components";
 
 export default Vue.extend({
   name: "App",
-  components: { MemberTable }
+  components: { MemberTable },
 });
 </script>

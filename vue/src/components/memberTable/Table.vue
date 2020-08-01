@@ -1,19 +1,29 @@
 <template>
-  <div>
-    <h2>Member Page</h2>
-    <input v-model="organizationName"/>
-    <button @click="loadMembers">Load</button>
-    <table :class="$style.table">
-      <thead>
-        <member-head/>
-      </thead>
-      <tbody>
-        <template v-for="member in members">
-          <member-row :key="member.id" :member="member"/>
-        </template>
-      </tbody>
-    </table>
-  </div>
+  <v-container>
+    <v-layout column>
+      <v-flex xs12>
+        <h2>Member Page</h2>
+      </v-flex>
+      <v-layout row>
+        <v-flex xs6>
+          <v-text-field v-model="organizationName" />
+        </v-flex>
+        <v-flex xs6>
+          <v-btn @click="loadMembers"> Load </v-btn>
+        </v-flex>
+      </v-layout>
+      <table :class="$style.table">
+        <thead>
+          <member-head />
+        </thead>
+        <tbody>
+          <template v-for="member in members">
+            <member-row :key="member.id" :member="member" />
+          </template>
+        </tbody>
+      </table>
+    </v-layout>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -28,15 +38,15 @@ export default Vue.extend({
   components: { MemberHead, MemberRow },
   data: () => ({
     members: [] as Member[],
-    organizationName: 'lemoncode' as string
+    organizationName: "lemoncode" as string,
   }),
   methods: {
     loadMembers: function() {
       getAllMembers(this.organizationName).then(members => {
         this.members = members;
       });
-    }
-  }
+    },
+  },
 });
 </script>
 
